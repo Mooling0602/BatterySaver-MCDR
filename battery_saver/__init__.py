@@ -5,6 +5,7 @@ from mcdreforged.api.all import *
 CHECK_INTERVAL = 5
 SHUTDOWN_THRESHOLD = 30
 psi = ServerInterface.psi()
+stop_check = False
 
 def empty():
     pass
@@ -38,9 +39,20 @@ def on_load(server: PluginServerInterface, old):
         )
     )
     main()
-    
+
+def unload():
+    global stop_check
+    stop_check = True
+
 @new_thread
 def main():    
     while True:
         check_battery_status()
+        if stop_check:
+            break
         time.sleep(CHECK_INTERVAL)
+
+def on_unload(server: PluginServerInterface):
+    unload()
+    time.sleep(CHECK_INTERVAL + 1)
+    server.logger.info("BatterySaver unloaded.")
