@@ -6,6 +6,8 @@
 
 建议投入生产环境前整个测试环境排查一下，避免潜在问题，发现问题可以提出issue反馈）
 
+暂时停止更新。
+
 For English users, translate by yourself with tools like Google Translate.
 
 Tips in plugin are written by English.
