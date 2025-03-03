@@ -1,6 +1,6 @@
 {
 	"id": "battery_saver",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"name": "BatterySaver",
 	"description": {
 		"en_us": "Check battery of host machine and automatically stop server when it's low.",
