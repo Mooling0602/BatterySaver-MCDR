@@ -1,7 +1,7 @@
 - 中文（简体）
 > English not supported yet, use translate tools instead.
 
-# BatterySaver
+# BatterySaver-MCDR
 简单的服务器电源管理插件，支持自定义配置。
 
 如果觉得好用，请给个Star~
