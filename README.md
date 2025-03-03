@@ -1,5 +1,10 @@
+- 中文（简体）
+> English not supported yet, use translate tools instead.
+
 # BatterySaver
 简单的服务器电源管理插件，支持自定义配置。
+
+如果觉得好用，请给个Star~
 
 ## 用法
 修改配置中的检测频次和最低关服电量，然后插件将在服务器启动完成后达到最低关服电量时自动关服。
