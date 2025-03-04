@@ -77,7 +77,7 @@ def on_load(server: PluginServerInterface, old):
         .runs(lambda src: src.reply(get_battery_info()))
     )
 
-    if server.is_server_startup:
+    if server.is_server_startup():
         on_server_startup(server)
 
 def on_server_startup(server: PluginServerInterface):

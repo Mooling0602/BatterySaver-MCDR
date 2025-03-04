@@ -8,4 +8,4 @@ battery_monitor:
   check_interval: 5
   # 是否启用电池电量监控
   enabled: true
-  version: '0.0.2'
+  version: '0.0.3'
