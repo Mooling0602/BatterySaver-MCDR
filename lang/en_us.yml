@@ -1,0 +1,11 @@
+battery_saver:
+  config:
+    check_passed: Config is valid, plugin will start to work!
+    loaded: Config loaded!
+    mismatch: Old config does not match this plugin version, a default one will extract and old one will be backuped.
+    remove_bak: Last config backup is deleting to backup present one!
+  plugin:
+    current_ver: "Present needed config version: {config_ver}"
+  task:
+    start: BatteryMonitor thread starts!
+    cancel: BatteryMonitor thread cancelled!

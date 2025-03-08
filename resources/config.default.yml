@@ -1,0 +1,7 @@
+battery_monitor:
+  enough_battery_to_start: 50
+  low_battery_threshold: 30
+  check_interval: 5
+  enabled: true
+  reply_format: 'Battery: {bat_p}%, is charging: {is_c}'
+  version: '0.1.0'

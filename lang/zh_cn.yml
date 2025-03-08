@@ -1,0 +1,11 @@
+battery_saver:
+  config:
+    check_passed: 配置文件可用，插件将开始运行……
+    loaded: 配置文件已加载！
+    mismatch: 已有的配置文件不符合此插件的版本，将解压插件内默认配置并备份已有配置！
+    remove_bak: 正在删除上一次的配置文件备份以备份当前的配置！
+  plugin:
+    current_ver: 当前所需配置文件版本：{config_ver}
+  task:
+    start: 电量监控线程启动！
+    cancel: 电量监控线程取消！

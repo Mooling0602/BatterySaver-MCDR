@@ -1,6 +1,6 @@
 {
 	"id": "battery_saver",
-	"version": "0.0.3",
+	"version": "0.1.0",
 	"name": "BatterySaver",
 	"description": {
 		"en_us": "Check battery of host machine and automatically stop server when it's low.",
@@ -12,5 +12,6 @@
 	},
 	"author": "Mooling0602",
     "link": "https://github.com/Mooling0602/BatterySaver-MCDR",
-	"resources": ["resources"]
+	"entrypoint": "battery_saver.framework.entry",
+	"resources": ["lang", "resources"]
 }

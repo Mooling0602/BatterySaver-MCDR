@@ -1,0 +1,16 @@
+## BatterySaver 插件配置文件
+
+# 主机的电池电量监控配置
+battery_monitor:
+  # 触发启动服务器的电量，只有服务器未在运行时生效，百分比
+  enough_battery_to_start: 50
+  # 触发关服的低电量阈值，百分比
+  low_battery_threshold: 30
+  # 每次检查的间隔，单位为秒，过小可能会加重性能负担，过大可能导致检测不及时和插件卸载过久的问题
+  check_interval: 5
+  # 是否启用电池电量监控
+  enabled: true
+  # 查询电量时的回复消息格式
+  reply_format: "剩余电量：{bat_p}%, 外部供电：{is_c}"
+  # 配置文件版本，请勿更改！
+  version: '0.1.0'
