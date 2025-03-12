@@ -26,20 +26,20 @@ def load_config(server: PluginServerInterface):
             'version': config_ver
         }
     }, echo_in_console=False)
-    server.logger.info(tr("config.loaded"))
+    server.logger.info(tr(server, "config.loaded"))
 
 @execute_if(lambda: data.config != {} and data.config is not None)
 def check_config(server: PluginServerInterface):
     config_path = os.path.join(server.get_data_folder(), 'config.yml')
     prev_config_ver = data.config['battery_monitor'].get('version', None)
     if prev_config_ver != config_ver:
-        server.logger.warning(tr("config.mismatch"))
+        server.logger.warning(tr(server, "config.mismatch"))
         if not os.path.exists(f"{config_path}.bak"):
             os.rename(config_path, f"{config_path}.bak")
         else:
-            server.logger.warning(tr("config.remove_bak"))
+            server.logger.warning(tr(server, "config.remove_bak"))
             os.remove(f"{config_path}.bak")
             os.rename(config_path, f"{config_path}.bak")
         server.reload_plugin(server.get_self_metadata().id)
     else:
-        server.logger.info(tr("config.check_passed"))
+        server.logger.info(tr(server, "config.check_passed"))

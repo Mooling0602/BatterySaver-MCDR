@@ -24,13 +24,22 @@ def on_load(server: PluginServerInterface, old):
 @execute_if(lambda: data.config['battery_monitor'].get("enabled", None))
 def on_server_startup(server: PluginServerInterface):
     data.monitor_battery = True
-    server.logger.info(tr("task.start"))
+    server.logger.info(tr(server, "task.start"))
     battery_monitor(server)
+    server.logger.info(f"Thread status: {data.monitor_battery}")
 
 def on_unload(server: PluginServerInterface):
+    server.logger.info("Cleaning plugin thread...")
     data.monitor_battery = False
 
 @builder.command('!!battery')
 def on_query(src: CommandSource):
     bat_p, is_c = get_battery_info(2)
     src.reply(data.config['battery_monitor'].get('reply_format', None).format(bat_p=bat_p, is_c=is_c))
+
+@builder.command('!!battery status')
+def on_status(src: CommandSource):
+    if src.is_console:
+        data.check_thread = {"src": "console"}
+    else:
+        data.check_thread = {"src": f"{src.player}"}

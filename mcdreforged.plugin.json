@@ -1,6 +1,6 @@
 {
 	"id": "battery_saver",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"name": "BatterySaver",
 	"description": {
 		"en_us": "Check battery of host machine and automatically stop server when it's low.",
@@ -8,7 +8,7 @@
 	},
 	"dependencies": {
 		"mcdreforged": ">=2.1.0",
-		"mutils": ">=0.0.3"
+		"mutils": "==0.0.4"
 	},
 	"author": "Mooling0602",
     "link": "https://github.com/Mooling0602/BatterySaver-MCDR",

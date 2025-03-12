@@ -25,6 +25,10 @@ def battery_monitor(server: PluginServerInterface):
             if data.monitor_battery:
                 time.sleep(data.config['battery_monitor'].get("monitor_interval", 5))
             else:
-                server.logger.warning(tr("task.cancel"))
+                server.logger.warning(tr(server,"task.cancel"))
                 break
-        
+            if isinstance(data.check_thread, dict) and data.check_thread != {}:
+                if data.check_thread.get("src", None) == "console":
+                    server.logger.info("Monitor thread running!")
+                elif data.check_thread.get("src", None) is not None and isinstance(data.check_thread.get("src", None), str):
+                    server.tell(data.check_thread.get("src", None), "Thread BatteryMonitor running!")
