@@ -15,18 +15,24 @@ def on_load(server: PluginServerInterface, old):
     if check_config is not None:
         check_config(server)
     builder.register(server)
-    if server.is_server_startup():
-        on_server_startup(server)
-    if not server.is_server_running():
-        data.stop_server_when_lowb = False
+    start_task(server)
     server.register_event_listener(f"{server.get_self_metadata().id}:battery_info", on_battery_event)
+
+@execute_if(lambda: data.config['battery_monitor'].get("enabled", None))
+def start_task(server: PluginServerInterface):
+    if data.monitor_battery is not True:
+        data.monitor_battery = True
+    server.logger.info(tr(server, "task.start"))
+    if not data.monitor_task_lock.locked():
+        battery_monitor(server)
+    else:
+        server.logger.info(tr(server, "task.running"))
 
 @execute_if(lambda: data.config['battery_monitor'].get("enabled", None))
 def on_server_startup(server: PluginServerInterface):
     data.monitor_battery = True
     server.logger.info(tr(server, "task.start"))
-    battery_monitor(server)
-    server.logger.info(f"Thread status: {data.monitor_battery}")
+    start_task(server)
 
 def on_unload(server: PluginServerInterface):
     server.logger.info("Cleaning plugin thread...")

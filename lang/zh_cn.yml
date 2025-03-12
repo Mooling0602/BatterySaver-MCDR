@@ -9,3 +9,4 @@ battery_saver:
   task:
     start: 电量监控线程启动！
     cancel: 电量监控线程取消！
+    running: 电量监控线程正在运行……

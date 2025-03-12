@@ -9,3 +9,4 @@ battery_saver:
   task:
     start: BatteryMonitor thread starts!
     cancel: BatteryMonitor thread cancelled!
+    running: BatteryMonitor thread is running...

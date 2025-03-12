@@ -32,3 +32,6 @@ def battery_monitor(server: PluginServerInterface):
                     server.logger.info("Monitor thread running!")
                 elif data.check_thread.get("src", None) is not None and isinstance(data.check_thread.get("src", None), str):
                     server.tell(data.check_thread.get("src", None), "Thread BatteryMonitor running!")
+                else:
+                    server.logger.warning("Reply check source error!")
+                data.check_thread = {}
