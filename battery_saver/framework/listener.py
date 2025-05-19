@@ -10,7 +10,10 @@ def on_battery_event(server: PluginServerInterface, battery_info: dict):
     if battery_info.get("level_shift", None) == "down"\
         and battery_info.get("percent", None) < data.config['battery_monitor'].get('low_battery_threshold', 30)\
         and battery_info.get("is_charging", None) is False:
-        server.stop()
+        if data.stop_server_when_lowb is True:
+            if server.is_server_running():
+                server.stop()
+                data.stop_server_when_lowb = False
     if battery_info.get("percent", None) >= data.config['battery_monitor'].get('enough_battery_to_start', 50):
         if not server.is_server_running():
             server.start()
