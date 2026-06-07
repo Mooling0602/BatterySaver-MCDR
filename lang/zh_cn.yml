@@ -7,6 +7,7 @@ battery_saver:
   plugin:
     current_ver: 当前所需配置文件版本：{config_ver}
   task:
+    conflict_warning: "检测到已安装 HibernateR，为了避免端口冲突，电量充足时将不会自动启动服务器。"
     start: 电量监控线程启动！
     cancel: 电量监控线程取消！
     running: 电量监控线程正在运行……

@@ -7,6 +7,7 @@ battery_saver:
   plugin:
     current_ver: "Present needed config version: {config_ver}"
   task:
+    conflict_warning: "HibernateR is detected. Auto-start feature is disabled to prevent port conflicts."
     start: BatteryMonitor thread starts!
     cancel: BatteryMonitor thread cancelled!
     running: BatteryMonitor thread is running...
