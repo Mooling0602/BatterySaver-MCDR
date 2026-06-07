@@ -1,6 +1,7 @@
 import battery_saver.data as data
 
 from mcdreforged.api.all import *
+from battery_saver.core import check_hibernater
 
 
 def on_battery_event(server: PluginServerInterface, battery_info: dict):
@@ -16,4 +17,5 @@ def on_battery_event(server: PluginServerInterface, battery_info: dict):
                 data.stop_server_when_lowb = False
     if battery_info.get("percent", None) >= data.config['battery_monitor'].get('enough_battery_to_start', 50):
         if not server.is_server_running():
-            server.start()
+            if not check_hibernater(server):
+                server.start()

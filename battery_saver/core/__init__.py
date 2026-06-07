@@ -10,3 +10,9 @@ def get_battery_info(decimal_place: Optional[int] = None) -> tuple:
     is_charging = battery_data.power_plugged
     return battery, is_charging
 
+def check_hibernater(server) -> bool:
+    for plugin_id in server.get_plugin_list():
+        if plugin_id.lower() in ('hibernater', 'hibernate_r'):
+            return True
+    return False
+

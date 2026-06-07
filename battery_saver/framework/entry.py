@@ -5,7 +5,7 @@ from mutils import execute_if
 from .config import *
 from .listener import on_battery_event
 from battery_saver.core.task import battery_monitor
-from battery_saver.core import get_battery_info
+from battery_saver.core import get_battery_info, check_hibernater
 
 
 builder = SimpleCommandBuilder()
@@ -15,6 +15,11 @@ def on_load(server: PluginServerInterface, old):
     if check_config is not None:
         check_config(server)
     builder.register(server)
+
+    # Check for HibernateR
+    if check_hibernater(server):
+        server.logger.warning(tr(server, 'task.conflict_warning'))
+
     start_task(server)
     server.register_event_listener(f"{server.get_self_metadata().id}:battery_info", on_battery_event)
 
